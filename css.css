@@ -1,0 +1,193 @@
+/* Thiết lập kiểu chữ, màu nền và kích thước tổng thể */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    animation: fadeInBody 1s ease-out; /* Hiệu ứng fade-in cho body */
+}
+
+/* Hiệu ứng fade-in cho toàn bộ trang */
+@keyframes fadeInBody {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Phần đầu trang, chứa thông tin cửa hàng */
+.header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    animation: fadeInHeader 1.5s ease-out forwards; /* Hiệu ứng fade-in cho header */
+}
+
+@keyframes fadeInHeader {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.header p {
+    font-size: 1.1rem;
+    margin: 5px 0;
+}
+
+/* Chia các sản phẩm thành một lưới */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    opacity: 0;
+    animation: fadeInProducts 2s ease-out forwards; /* Hiệu ứng fade-in cho các sản phẩm */
+}
+
+@keyframes fadeInProducts {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.product {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    opacity: 0;
+    animation: fadeInProduct 0.8s ease-out forwards; /* Hiệu ứng fade-in cho từng sản phẩm */
+}
+
+@keyframes fadeInProduct {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.product:nth-child(1) {
+    animation-delay: 0.2s;
+}
+.product:nth-child(2) {
+    animation-delay: 0.4s;
+}
+.product:nth-child(3) {
+    animation-delay: 0.6s;
+}
+.product:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.product-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    opacity: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.product:hover .product-info {
+    opacity: 1;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+}
+
+.product-info h3, .product-info p {
+    margin: 5px 0;
+}
+
+/* Footer chứa thông tin cửa hàng */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    opacity: 0;
+    animation: fadeInFooter 1s ease-out forwards; /* Hiệu ứng fade-in cho footer */
+}
+
+@keyframes fadeInFooter {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Media queries - Cải thiện giao diện trên các màn hình nhỏ */
+@media (max-width: 1024px) {
+    .product-container {
+        grid-template-columns: repeat(3, 1fr); /* Giảm cột thành 3 khi màn hình nhỏ hơn 1024px */
+    }
+
+    .header h1 {
+        font-size: 1.6rem;
+    }
+
+    .header p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-container {
+        grid-template-columns: repeat(2, 1fr); /* Giảm cột thành 2 khi màn hình nhỏ hơn 768px */
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+    }
+
+    .header p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-container {
+        grid-template-columns: 1fr; /* Chỉ hiển thị 1 cột trên điện thoại */
+    }
+
+    .header h1 {
+        font-size: 1.2rem;
+    }
+
+    .header p {
+        font-size: 0.8rem;
+    }
+
+    .footer {
+        font-size: 0.8rem;
+    }
+
+    .product-info h3 {
+        font-size: 1rem;
+    }
+
+    .product-info p {
+        font-size: 0.9rem;
+    }
+}
